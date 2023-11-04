@@ -26,7 +26,7 @@ passport.deserializeUser(function (id, done) {
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/github/todo",
+    callbackURL: "https://notifyit-pro.onrender.com/auth/github/todo",
     scope: ['user:email'] 
 }, function (accessToken, refreshToken, profile, done) {
     
@@ -46,7 +46,7 @@ passport.use(new GitHubStrategy({
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/todo",
+    callbackURL: "https://notifyit-pro.onrender.com/auth/google/todo",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
     scope: ['profile', 'email'],
 }, (accessToken, refreshToken, profile, done) => {
