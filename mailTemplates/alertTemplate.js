@@ -1,4 +1,4 @@
-const alertTemplate = (taskName, deadline) => {
+const alertTemplate = (userName, taskName, deadline) => {
 	return `<!DOCTYPE html>
     <html>
     
@@ -6,16 +6,8 @@ const alertTemplate = (taskName, deadline) => {
         <meta charset="UTF-8">
         <title>Task Alert</title>
         <style>
-            html {
-                background-color: #E4E9FD;
-                background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
-                min-height: 100vh;
+            html, body {
                 font-family: 'helvetica neue';
-            }
-    
-            body {
-    
-                font-family: Arial, sans-serif;
                 font-size: 16px;
                 line-height: 1.4;
                 color: #333333;
@@ -63,6 +55,14 @@ const alertTemplate = (taskName, deadline) => {
                 font-weight: bold;
             }
     
+            .task {
+                margin: 0;
+                padding: 20px;
+                font-size: 20px;
+                font-weight: 200;
+                color: #00204a;
+            }
+    
             #heading {
                 background-color: #A683E3;
                 text-align: center;
@@ -82,24 +82,38 @@ const alertTemplate = (taskName, deadline) => {
                 box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
             }
     
-        </style>
+            /* Additional styles for the email */
+            p {
+                margin: 0;
+                padding: 20px;
+            }
     
+            .task-name {
+                font-size: 20px;
+                font-weight: bold;
+            }
+    
+            .deadline {
+                font-size: 20px;
+                font-weight: 200;
+                color: #00204a;
+            }
+        </style>
     </head>
     
     <body>
         <div class="container">
             <div class="box" id="heading">
-                <h1>Task Alert</h1>
+                <h1>Task Alert 🔔</h1>
             </div>
-            <div class="message">Task Alert</div>
             <div class="body">
-                <p>Dear User,</p>
+                <p>Dear ${userName},</p>
                 <p>You have a task with an upcoming deadline:</p>
                 <div class="task">
-                    Task: ${taskName}
+                    <span class="task-name">Task: ${taskName}</span>
                 </div>
                 <div class="task">
-                    Deadline: ${deadline}
+                    <span class="deadline">${deadline} ⏰</span>
                 </div>
                 <p>Make sure to complete the task on time to stay organized and on top of your to-do list.</p>
                 <p>If you've already completed the task, you can mark it as done in your Todo App.</p>
@@ -107,10 +121,10 @@ const alertTemplate = (taskName, deadline) => {
             <div class="support">If you have any questions or need assistance, please feel free to contact us at <a
                 href="mailto:info@todoapp.com">info@todoapp.com</a>.</div>
         </div>
-    
     </body>
     
-    </html>`;
+    </html>
+    `;
 };
 
 module.exports = alertTemplate;    

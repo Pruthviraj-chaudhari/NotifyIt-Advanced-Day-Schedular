@@ -26,6 +26,7 @@ router.get("/logout", (req, res) => {
     req.logout(() => {
         res.clearCookie("token");
         res.redirect("/");
+        console.log("User logout successfully");
     });
 });
 

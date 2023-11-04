@@ -29,6 +29,7 @@ h1 {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #F1F1F1;
+  position: relative; 
 }
 
 .item:last-child {
@@ -135,10 +136,13 @@ input[type="time"] {
   right: 20px;
 }
 
+
 .displayTime {
   position: absolute;
-  right: 38%;
+  right: 10px; /* Adjust this value as needed */
+  top: 0; /* Position it at the top of the item container */
 }
+
 
 
 /* Media Query for Mobile View */

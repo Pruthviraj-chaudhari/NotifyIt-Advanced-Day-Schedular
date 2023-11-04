@@ -25,7 +25,6 @@ exports.addTodo = async (req, res) => {
         { new: true } // returns updated list
     )
         .then(async (updatedList) => {
-            console.log(updatedList);
             if (updatedList) {
                 console.log('New Item Added');
                 // Schedule a notification 5 minutes before the deadline
@@ -41,14 +40,10 @@ exports.addTodo = async (req, res) => {
         });
 };
 
-
 exports.getTodo = async (req, res) => {
-
-    console.log(req.isAuthenticated);
-
+    
     if (req.isAuthenticated || req.isAuthenticated()) {
-        console.log("Logged User: ", req.user);
-
+        
         User.findById(req.user.id)
             .then((foundUser) => {
                 if (foundUser && foundUser.items.length === 0) {
@@ -102,33 +97,52 @@ function isValidDeadline(deadline) {
 }
 
 // Function to schedule a notification 5 minutes before the deadline
+// function scheduleNotification(user, item) {
+//     const fiveMinutesBeforeDeadline = new Date();
+//     const [hours, minutes] = item.deadline.split(':').map(Number);
+//     fiveMinutesBeforeDeadline.setHours(hours, minutes - 5, 0, 0);
+
+//     const currentTime = new Date();
+
+//     if (fiveMinutesBeforeDeadline > currentTime) {
+//         // Calculate the delay until the notification
+//         const delayInMilliseconds = fiveMinutesBeforeDeadline - currentTime;
+
+//         // Schedule the notification
+//         setTimeout(() => {
+//             sendNotification(user, item);
+//         }, delayInMilliseconds);
+//     }
+// }
+
+// Function to schedule a notification if deadline is in less than 5 minutes 
 function scheduleNotification(user, item) {
-    const fiveMinutesBeforeDeadline = new Date();
+
     const [hours, minutes] = item.deadline.split(':').map(Number);
-    fiveMinutesBeforeDeadline.setHours(hours, minutes - 5, 0, 0);
+
+    const deadlineTime = new Date();
+    deadlineTime.setHours(hours, minutes, 0, 0);
+
+    const fiveMinutesBeforeDeadline = new Date(deadlineTime);
+    fiveMinutesBeforeDeadline.setMinutes(deadlineTime.getMinutes() - 5);
 
     const currentTime = new Date();
 
-    if (fiveMinutesBeforeDeadline > currentTime) {
-        // Calculate the delay until the notification
-        const delayInMilliseconds = fiveMinutesBeforeDeadline - currentTime;
-
-        // Schedule the notification
-        setTimeout(() => {
-            sendNotification(user, item);
-        }, delayInMilliseconds);
+    if (fiveMinutesBeforeDeadline <= currentTime) {
+        sendNotification(user, item);
     }
 }
 
 // Function to send email notifications using mailSender
 function sendNotification(user, item) {
     const email = user.email;
-    const title = 'Task Deadline Alert';
-    const body = alertTemplate(item.name, item.deadline);
+    const name = user.name;
+    const title = 'Task Alert';
+    const body = alertTemplate(name, item.name, item.deadline);
 
     mailSender(email, title, body)
         .then((info) => {
-            console.log('Alert Email sent: ' + info.response);
+            console.log(`Alert Email sent to ${user.name}`);
         })
         .catch((error) => {
             console.error('Error sending alert email:', error.message);

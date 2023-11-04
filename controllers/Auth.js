@@ -87,7 +87,6 @@ exports.sendotp = async (req, res) => {
             lowerCaseAlphabets: false,
             specialChars: false,
         });
-        console.log("OTP generated: ", otp);
 
         let result = await OTP.findOne({ otp: otp });
 
@@ -104,13 +103,11 @@ exports.sendotp = async (req, res) => {
 
         const otpBody = await OTP.create(otpPayload);
 
-        console.log("OTP Body", otpBody);
-
         res.status(200).render("new2", { successMessage: "OTP Sent Successfully", emailText: email });
 
     } catch (error) {
         console.log(error.message);
-        return res.status(500).render("new2", { errorMessage: "Error occurred while sending OTP" });
+        return res.status(500).render("new1", { errorMessage: "Error occurred while sending OTP" });
     }
 };
 
