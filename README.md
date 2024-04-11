@@ -1,15 +1,21 @@
-# Todo List App
+# NotifyIt - Advanced Day Schedular
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
 
-This is a full-stack web application built with Node.js, Express.js, MongoDB, and EJS templating. It allows users to create and manage todo lists for different categories. The app is hosted on MongoDB Atlas, providing a reliable and scalable cloud database solution.
+NotifyIt is an advanced day scheduler designed to help users manage their day and increase productivity. 
+It allows users to create, organize, and track tasks efficiently, with integrated email reminders to notify users of pending tasks before the deadline.
+This is a full-stack web application built with Node.js, Express.js, MongoDB, and EJS templating. 
+
 
 ## Features
 
-- Create custom todo lists by using Express Route Parameters (e.g., `/work`, `/shopping`, etc.)
-- Default todo list shows items for the current date
+- **Task Management**: Create, edit, and organize tasks for efficient time management.
+- **Email Reminders**: Receive email reminders for pending tasks before the deadline.
+- **User Authentication**: Secure user authentication using Passport.js with OAuth, social logins, and Local Auth.
+- **Advanced Scheduler**: Schedule tasks and events for better organization and productivity.
+- **Scalable Database**: Utilizes MongoDB Atlas for scalable and secure cloud-hosted databases.
 - Add, edit, and delete todo items
 - Mark items as completed or uncompleted
 - User-friendly interface with dynamic rendering of todo items using EJS templating
@@ -17,16 +23,16 @@ This is a full-stack web application built with Node.js, Express.js, MongoDB, an
 
 ## Screenshots
 
-![Todo List App](https://i.ibb.co/Zh6kgzN/Screenshot-2023-06-17-012034.png)
+![Todo List App](https://i.ibb.co/YZGhRkg/notifyit.png)
 
 *Screenshot of the Todo List App in action*
 
-Live at 🚀 https://todo-list-rfeb.onrender.com/ 
+Live at 🚀 [https://notifyit-pro.onrender.com/](https://notifyit-pro.onrender.com/)
 
 ## Installation
 
 1. Clone the repository:
- git clone [https://github.com/pruthviraj-chaudhari/todo-list-app-mongodb.git](https://github.com/Pruthviraj-chaudhari/Todo-List-App-MongoDB.git)
+ git clone [https://github.com/pruthviraj-chaudhari/todo-list-app-mongodb.git](https://github.com/Pruthviraj-chaudhari/NotifyIt-Advanced-Day-Schedular.git)
 
 2. Install the dependencies:
  npm install
@@ -48,4 +54,4 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 For any inquiries or questions, please contact [Pruthviraj Chaudhari](mailto:chaudharipruthviraj888@gmail.com).
 
 
-# NotifyIt-Advanced-Day-Schedular
+
